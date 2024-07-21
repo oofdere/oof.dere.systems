@@ -17,7 +17,19 @@
 </script>
 
 <div class="tile {size}" style:--color={color}>
-	{@render children()}
+	<div class="content">
+		{@render children()}
+	</div>
+
+	{#if title}
+		<div class="title">
+			{#if typeof title === 'string'}
+				{title}
+			{:else}
+				{@render title()}
+			{/if}
+		</div>
+	{/if}
 </div>
 
 <style>
@@ -27,10 +39,20 @@
 		grid-column: span 2 / span 2;
 		grid-row: span 2 / span 2;
 		position: relative;
-		background-color: oklch(from var(--color) calc(l * 2) c h);
+		background-color: var(--color);
+		background: linear-gradient(
+			to right,
+			oklch(from var(--color) calc(l - 0.03) c h),
+			oklch(from var(--color) calc(l + 0.03) c h)
+		);
 		display: flex;
 		place-items: center;
 		justify-content: center;
+		color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
+	}
+
+	.content {
+		font-size: var(--font-size-3xl);
 	}
 
 	.smol {
@@ -48,6 +70,7 @@
 	.title {
 		position: absolute;
 		bottom: 0;
+		left: 0;
 		padding: var(--spacing-1) var(--spacing-2);
 	}
 </style>
