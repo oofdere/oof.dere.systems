@@ -10,7 +10,7 @@
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the docgerumentrfveration</p>
 
-<Tile {color} title="Svelte 5"><DeviconPlainSvelte></DeviconPlainSvelte></Tile>
+<Tile {color} title="Svelte 5" notif="99+"><DeviconPlainSvelte></DeviconPlainSvelte></Tile>
 <input type="color" bind:value={color} />
 
 <TileGroup title="group name">
