@@ -87,8 +87,8 @@
 		background-color: var(--color);
 		background: linear-gradient(
 			to right,
-			oklch(from var(--color) calc(l - 0.03) c h),
-			oklch(from var(--color) calc(l + 0.03) c h)
+			oklch(from var(--color) calc(l - 0.05) c h),
+			oklch(from var(--color) calc(l + 0.05) c h)
 		);
 		color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
 		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
@@ -117,7 +117,7 @@
 	}
 
 	.content {
-		font-size: var(--font-size-3xl);
+		font-size: var(--font-size-4xl);
 	}
 
 	.smol {
