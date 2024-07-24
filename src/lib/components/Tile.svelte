@@ -85,14 +85,17 @@
 		grid-row: span 2 / span 2;
 		position: relative;
 		background-color: var(--color);
-		background: linear-gradient(
-			to right,
-			oklch(from var(--color) calc(l - 0.05) c h),
-			oklch(from var(--color) calc(l + 0.05) c h)
-		);
-		color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
-		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
-			oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0 / 0.1);
+		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2) rgba(255, 255, 255, 0.1);
+		@supports (color: hsl(from white h s l)) {
+			background: linear-gradient(
+				to right,
+				oklch(from var(--color) calc(l - 0.05) c h),
+				oklch(from var(--color) calc(l + 0.05) c h)
+			);
+			color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
+			box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
+				oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0 / 0.1);
+		}
 		display: flex;
 		place-items: center;
 		justify-content: center;
