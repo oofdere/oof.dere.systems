@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
+	import type { Action } from 'svelte/action';
 
 	const {
 		children,
@@ -14,9 +15,41 @@
 		color?: string;
 		size?: 'smol' | 'normal' | 'wide';
 	} = $props();
+
+	let e: HTMLElement;
+	let rect: DOMRect;
+
+	let mouse = $state({
+		x: 0,
+		y: 0,
+		w: 0,
+		h: 0
+	});
+
+	function onmousemove(e: MouseEvent) {
+		console.log(e);
+		mouse = {
+			x: e.offsetX,
+			y: e.offsetY,
+			w: e.currentTarget.offsetWidth,
+			h: e.currentTarget.offsetHeight
+		};
+		console.log(mouse.x / mouse.w);
+	}
 </script>
 
-<div class="tile {size}" style:--color={color}>
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_mouse_events_have_key_events -->
+<div
+	class="tile {size}"
+	style:--color={color}
+	style:--x={mouse.x}
+	style:--y={mouse.y}
+	style:--w={mouse.w}
+	style:--h={mouse.h}
+	bind:this={e}
+	{onmousemove}
+>
 	<div class="content">
 		{@render children()}
 	</div>
@@ -57,12 +90,30 @@
 			oklch(from var(--color) calc(l - 0.03) c h),
 			oklch(from var(--color) calc(l + 0.03) c h)
 		);
+		color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
+		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
+			oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0 / 0.1);
 		display: flex;
 		place-items: center;
 		justify-content: center;
-		color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
-		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
-			oklch(from var(--color) calc(1 - ((l + 0.5) - mod(l + 0.5, 1))) 0 0 / 0.1);
+		transition: transform 0.2s;
+		transform-style: preserve-3d;
+		transform-origin: center center;
+		user-select: none;
+	}
+	.tile > * {
+		pointer-events: none;
+	}
+
+	/* eventually get these to take tile sizes into account */
+	.tile:hover {
+		transform: perspective(800px) rotateY(calc(4deg * (var(--x) / var(--w) * 2 - 1)))
+			rotateX(calc(-6deg * (var(--y) / var(--h) * 2 - 1))) scale(0.999);
+	}
+
+	.tile:active {
+		transform: perspective(800px) rotateY(calc(6deg * (var(--x) / var(--w) * 2 - 1)))
+			rotateX(calc(-8deg * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
 	}
 
 	.content {
