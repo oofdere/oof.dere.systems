@@ -47,6 +47,8 @@
 	style:--y={mouse.y}
 	style:--w={mouse.w}
 	style:--h={mouse.h}
+	style:--offsetX={size === 'smol' ? 2 : size === 'wide' ? 0.5 : 1}
+	style:--offsetY={size === 'smol' ? 2 : 1}
 	bind:this={e}
 	{onmousemove}
 >
@@ -110,13 +112,15 @@
 
 	/* eventually get these to take tile sizes into account */
 	.tile:hover {
-		transform: perspective(800px) rotateY(calc(4deg * (var(--x) / var(--w) * 2 - 1)))
-			rotateX(calc(-6deg * (var(--y) / var(--h) * 2 - 1))) scale(0.999);
+		transform: perspective(800px)
+			rotateY(calc(2deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
+			rotateX(calc(-4deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.999);
 	}
 
 	.tile:active {
-		transform: perspective(800px) rotateY(calc(6deg * (var(--x) / var(--w) * 2 - 1)))
-			rotateX(calc(-8deg * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
+		transform: perspective(800px)
+			rotateY(calc(4deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
+			rotateX(calc(-6deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
 	}
 
 	.content {
