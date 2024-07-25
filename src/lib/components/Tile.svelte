@@ -7,13 +7,17 @@
 		title = undefined,
 		notif = undefined,
 		color = '#2A81EE',
-		size = 'normal'
+		size = 'normal',
+		href,
+		...props
 	}: {
 		children: Snippet;
 		title?: string | Snippet;
 		notif?: string | Snippet;
 		color?: string;
 		size?: 'smol' | 'normal' | 'wide';
+		href?: string;
+		props?: any;
 	} = $props();
 
 	let e: HTMLElement;
@@ -40,8 +44,9 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-<div
-	class="tile {size}"
+<svelte:element
+	this={href ? 'a' : 'button'}
+	class="tile {size} flex flex-col"
 	style:--color={color}
 	style:--x={mouse.x}
 	style:--y={mouse.y}
@@ -51,33 +56,40 @@
 	style:--offsetY={size === 'smol' ? 2 : 1}
 	bind:this={e}
 	{onmousemove}
+	{href}
+	{...props}
 >
-	<div class="content">
+	<div
+		class="content flex-grow h-full flex place-items-center {size === 'smol'
+			? 'text-4xl'
+			: 'text-6xl'}"
+	>
 		{@render children()}
 	</div>
 
-	{#if title}
-		<div class="title">
-			{#if typeof title === 'string'}
-				{title}
-			{:else}
-				{@render title()}
+	{#if size !== 'smol'}
+		<div class="bo'om flex justify-between w-full p-0_5 items-center px-4">
+			{#if title}
+				<div class="title">
+					{#if typeof title === 'string'}
+						{title}
+					{:else}
+						{@render title()}
+					{/if}
+				</div>
 			{/if}
+			<div class="notif">
+				{#if notif}
+					{#if typeof notif === 'string'}
+						{notif}
+					{:else}
+						{@render notif()}
+					{/if}
+				{/if}
+			</div>
 		</div>
 	{/if}
-
-	{#if notif}
-		<div class="notif">
-			{#if typeof notif === 'string'}
-				{notif}
-			{:else}
-				{@render notif()}
-			{/if}
-		</div>
-	{/if}
-
-	<div class="glow"></div>
-</div>
+</svelte:element>
 
 <style>
 	.tile {
@@ -123,34 +135,16 @@
 			rotateX(calc(-6deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
 	}
 
-	.content {
-		font-size: var(--font-size-4xl);
-	}
-
 	.smol {
 		width: var(--spacing-16);
 		height: var(--spacing-16);
 		grid-column: span 1 / span 1;
 		grid-row: span 1 / span 1;
+		font-size: var(--font-size-4xl) !important;
 	}
 
 	.wide {
 		width: calc(var(--spacing-64) + var(--spacing-6));
 		grid-column: span 4 / span 4;
-	}
-
-	.title {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		padding: var(--spacing-1) var(--spacing-2);
-	}
-
-	.notif {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		font-weight: 700;
-		padding: var(--spacing-1) var(--spacing-2);
 	}
 </style>
