@@ -4,6 +4,7 @@
 
 	const {
 		children,
+		live,
 		title = undefined,
 		notif = undefined,
 		color = '#2A81EE',
@@ -12,6 +13,7 @@
 		...props
 	}: {
 		children: Snippet;
+		live?: Snippet;
 		title?: string | Snippet;
 		notif?: string | Snippet;
 		color?: string;
@@ -46,7 +48,7 @@
 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
 <svelte:element
 	this={href ? 'a' : 'button'}
-	class="tile {size} flex flex-col"
+	class="tile {size} flex flex-col px-4 p-0_5 gap-0_5"
 	style:--color={color}
 	style:--x={mouse.x}
 	style:--y={mouse.y}
@@ -60,15 +62,20 @@
 	{...props}
 >
 	<div
-		class="content flex-grow h-full flex place-items-center {size === 'smol'
+		class="content h-full {live ? 'w-full' : ''} flex items-center place-items-center {size ===
+		'smol'
 			? 'text-4xl'
 			: 'text-6xl'}"
 	>
-		{@render children()}
+		{#if live}
+			{@render live()}
+		{:else}
+			{@render children()}
+		{/if}
 	</div>
 
 	{#if size !== 'smol'}
-		<div class="bo'om flex justify-between w-full p-0_5 items-center px-4">
+		<div class="bo'om flex justify-between w-full items-center">
 			{#if title}
 				<div class="title">
 					{#if typeof title === 'string'}
@@ -125,14 +132,14 @@
 	/* eventually get these to take tile sizes into account */
 	.tile:hover {
 		transform: perspective(800px)
-			rotateY(calc(2deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
-			rotateX(calc(-4deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.999);
+			rotateY(calc(4deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
+			rotateX(calc(-6deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.999);
 	}
 
 	.tile:active {
 		transform: perspective(800px)
-			rotateY(calc(4deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
-			rotateX(calc(-6deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
+			rotateY(calc(6deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
+			rotateX(calc(-8deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
 	}
 
 	.smol {
