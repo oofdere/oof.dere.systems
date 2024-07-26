@@ -6,7 +6,16 @@
 
 <div class="p-2">
 	<div>{title}</div>
-	<div class="inline-grid grid-cols-4 gap-2">
+	<div class="group inline-grid grid-flow-dense auto-rows-max gap-2 w-full justify-center">
 		{@render children()}
 	</div>
 </div>
+
+<style>
+	.group {
+		grid-template-columns: repeat(auto-fit, minmax(var(--spacing-16), var(--spacing-16)));
+		@media (width >= 48rem /* 768px */) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+</style>
