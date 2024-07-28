@@ -33,14 +33,12 @@
 	});
 
 	function onmousemove(e: MouseEvent) {
-		console.log(e);
 		mouse = {
 			x: e.offsetX,
 			y: e.offsetY,
 			w: e.currentTarget.offsetWidth,
 			h: e.currentTarget.offsetHeight
 		};
-		console.log(mouse.x / mouse.w);
 	}
 </script>
 
@@ -110,7 +108,6 @@
 		grid-row: span 2 / span 2;
 		position: relative;
 		background-color: var(--color);
-		/*box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2) rgba(255, 255, 255, 0.1);*/
 		@supports (color: hsl(from white h s l)) {
 			background: linear-gradient(
 				to right,
@@ -118,8 +115,6 @@
 				oklch(from var(--color) calc(l + 0.05) c h)
 			);
 			color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
-			/*box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
-				oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0 / 0.1);*/
 		}
 		display: flex;
 		place-items: center;
@@ -133,7 +128,6 @@
 		pointer-events: none;
 	}
 
-	/* eventually get these to take tile sizes into account */
 	.tile:hover {
 		transform: perspective(800px)
 			rotateY(calc(4deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))

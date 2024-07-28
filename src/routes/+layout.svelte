@@ -31,10 +31,6 @@
 		<TileGroup>
 			<Tile title="Under Construction"><TwemojiConstruction></TwemojiConstruction></Tile>
 			<Tile title="About Me"><FluentMdl2SurveyQuestions></FluentMdl2SurveyQuestions></Tile>
-			<Tile size="wide">Quotes</Tile>
-			<Tile title="Weather">w</Tile>
-			<Tile title="Clock">c</Tile>
-			<Tile>FAQ</Tile>
 		</TileGroup>
 
 		<TileGroup title="find me on">
@@ -67,7 +63,7 @@
 			<Tile href="https://twitter.com/oofdere" color="#1F9FF4" title="Twitter">
 				<SimpleIconsTwitter></SimpleIconsTwitter>
 			</Tile>
-			<Tile href="https://github.com/oofdere" color="#333" size="smol">
+			<Tile href="https://github.com/oofdere" title="GitHub" color="#333">
 				<SimpleIconsGithub></SimpleIconsGithub>
 			</Tile>
 		</TileGroup>
@@ -94,8 +90,13 @@
 			</Tile>
 			<Tile size="smol"><LogosBun></LogosBun></Tile>
 		</TileGroup>
+
+		<hr />
+
+		copyright current year me<br /> all logos are property of their owners <br />reminder: put AACS
+		key here
 	</div>
-	<div class="w-screen sm:w-auto snap-center">
+	<div class="w-screen sm:w-full snap-center">
 		{@render children()}
 	</div>
 </div>
