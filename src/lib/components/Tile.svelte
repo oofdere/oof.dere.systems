@@ -96,6 +96,10 @@
 			</div>
 		</div>
 	{/if}
+
+	<div
+		class="b absolute top-0 left-0 w-full h-full mix-blend-overlay opacity-20 pointer-events-none"
+	></div>
 </svelte:element>
 
 <style>
@@ -106,7 +110,7 @@
 		grid-row: span 2 / span 2;
 		position: relative;
 		background-color: var(--color);
-		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2) rgba(255, 255, 255, 0.1);
+		/*box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2) rgba(255, 255, 255, 0.1);*/
 		@supports (color: hsl(from white h s l)) {
 			background: linear-gradient(
 				to right,
@@ -114,8 +118,8 @@
 				oklch(from var(--color) calc(l + 0.05) c h)
 			);
 			color: oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0);
-			box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
-				oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0 / 0.1);
+			/*box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5) / 2)
+				oklch(from var(--color) calc(1 - ((l + 0.3) - mod(l + 0.3, 1))) 0 0 / 0.1);*/
 		}
 		display: flex;
 		place-items: center;
@@ -140,6 +144,10 @@
 		transform: perspective(800px)
 			rotateY(calc(6deg * var(--offsetY) * (var(--x) / var(--w) * 2 - 1)))
 			rotateX(calc(-8deg * var(--offsetX) * (var(--y) / var(--h) * 2 - 1))) scale(0.985);
+	}
+
+	.b {
+		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5)) rgba(255, 255, 255, 1);
 	}
 
 	.smol {
