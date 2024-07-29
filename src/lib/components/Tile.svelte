@@ -46,6 +46,7 @@
 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
 <svelte:element
 	this={href ? 'a' : 'button'}
+	draggable={false}
 	class="tile {size} flex flex-col px-4 p-0_5 gap-0_5"
 	style:--color={color}
 	style:--x={mouse.x}
@@ -60,10 +61,9 @@
 	{...props}
 >
 	<div
-		class="content h-full {live ? 'w-full' : ''} flex items-center place-items-center {size ===
-		'smol'
-			? 'text-4xl'
-			: 'text-6xl'}"
+		class="content drag-none h-full {live
+			? 'w-full'
+			: ''} flex items-center place-items-center {size === 'smol' ? 'text-4xl' : 'text-6xl'}"
 	>
 		{#if live}
 			{@render live()}
@@ -102,6 +102,7 @@
 
 <style>
 	.tile {
+		user-drag: none;
 		width: calc(var(--spacing-32) + var(--spacing-2));
 		height: calc(var(--spacing-32) + var(--spacing-2));
 		grid-column: span 2 / span 2;
