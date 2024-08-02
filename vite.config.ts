@@ -7,7 +7,20 @@ export default defineConfig({
 	plugins: [sveltekit(), tailwindcss(), Icons({ compiler: 'svelte' })
 	],
 	css: {
-		transformer: 'lightningcss'
+		transformer: 'lightningcss',
+		lightningcss: {
+			visitor: {
+				Token: {
+					dimension(token) {
+						if (token.unit === 'tw') {
+							return {
+								raw: `${token.value * 0.25}rem`
+							}
+						}
+					}
+				}
+			}
+		}
 	},
 	build: {
 		cssMinify: 'lightningcss'

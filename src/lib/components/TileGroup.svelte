@@ -13,7 +13,7 @@
 
 <style>
 	.group {
-		grid-template-columns: repeat(auto-fit, minmax(var(--spacing-16), var(--spacing-16)));
+		grid-template-columns: repeat(auto-fit, minmax(16tw, 16tw));
 		@media (width >= 48rem /* 768px */) {
 			grid-template-columns: repeat(4, minmax(0, 1fr));
 		}

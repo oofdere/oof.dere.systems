@@ -88,6 +88,6 @@
 
 <style>
 	.group {
-		grid-template-columns: repeat(auto-fit, minmax(var(--spacing-16), var(--spacing-16)));
+		grid-template-columns: repeat(auto-fit, minmax(16tw, 16tw));
 	}
 </style>

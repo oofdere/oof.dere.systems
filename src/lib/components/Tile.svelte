@@ -103,8 +103,8 @@
 <style>
 	.tile {
 		user-drag: none;
-		width: calc(var(--spacing-32) + var(--spacing-2));
-		height: calc(var(--spacing-32) + var(--spacing-2));
+		width: 34tw;
+		height: 34tw;
 		grid-column: span 2 / span 2;
 		grid-row: span 2 / span 2;
 		position: relative;
@@ -142,19 +142,19 @@
 	}
 
 	.b {
-		box-shadow: inset 0px 0px 0px calc(var(--spacing-0_5)) rgba(255, 255, 255, 1);
+		box-shadow: inset 0px 0px 0px calc(0.5tw) rgba(255, 255, 255, 1);
 	}
 
 	.smol {
-		width: var(--spacing-16);
-		height: var(--spacing-16);
+		width: 16tw;
+		height: 16tw;
 		grid-column: span 1 / span 1;
 		grid-row: span 1 / span 1;
 		font-size: var(--font-size-4xl) !important;
 	}
 
 	.wide {
-		width: calc(var(--spacing-64) + var(--spacing-6));
+		width: 70tw;
 		grid-column: span 4 / span 4;
 	}
 </style>
