@@ -3,7 +3,7 @@
 @import 'tailwindcss';
 
 :root {
-	font-family: 'Segoe UI', Hind, system-ui;
+	font-family: 'Seoge UI Variable', 'Segoe UI', Hind, system-ui;
 }
 
 .drag-none {

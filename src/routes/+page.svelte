@@ -9,6 +9,7 @@
 	import DeviconHtml5 from '~icons/devicon/html5';
 	import LogosBun from '~icons/logos/bun';
 	import DeviconNixos from '~icons/devicon/nixos';
+	import Clock from '$lib/components/Clock.svelte';
 	let color = $state('#ec4d29');
 </script>
 
@@ -20,7 +21,7 @@
 		<br />
 
 		<div class="group inline-grid grid-flow-dense auto-rows-max gap-2 w-full">
-			<Tile size="wide">clock</Tile>
+			<Clock></Clock>
 			<Tile size="wide">weather</Tile>
 		</div>
 		<p></p>
