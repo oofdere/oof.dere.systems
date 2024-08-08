@@ -142,7 +142,7 @@
 	}
 
 	.b {
-		box-shadow: inset 0px 0px 0px calc(0.5tw) rgba(255, 255, 255, 1);
+		box-shadow: inset 0px 0px 0px 0.5tw rgba(255, 255, 255, 1);
 	}
 
 	.smol {
