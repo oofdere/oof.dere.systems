@@ -5,12 +5,11 @@
 	import DeviconPlainSvelte from '~icons/devicon-plain/svelte';
 	import LogosTailwindcssIcon from '~icons/logos/tailwindcss-icon';
 	import LogosVitejs from '~icons/logos/vitejs';
-	import DeviconCss3 from '~icons/devicon/css3';
+	import Fa6BrandsCss from '~icons/fa6-brands/css';
 	import DeviconHtml5 from '~icons/devicon/html5';
 	import LogosBun from '~icons/logos/bun';
 	import DeviconNixos from '~icons/devicon/nixos';
 	import Clock from '$lib/components/Clock.svelte';
-	let color = $state('#ec4d29');
 </script>
 
 <div class="w-full flex items-center">
@@ -47,19 +46,19 @@
 				href="https://tailwindcss.com/blog/tailwindcss-v4-alpha"
 				size="smol"
 			>
-				<LogosTailwindcssIcon></LogosTailwindcssIcon>
+				<LogosTailwindcssIcon class="w-12"></LogosTailwindcssIcon>
 			</Tile>
-			<Tile size="smol">
+			<Tile size="smol" color="#2e3050">
 				<LogosVitejs></LogosVitejs>
 			</Tile>
-			<Tile size="smol">
+			<Tile size="smol" color="white">
 				<DeviconHtml5></DeviconHtml5>
 			</Tile>
-			<Tile size="smol">
-				<DeviconCss3></DeviconCss3>
+			<Tile size="smol" color="rebeccapurple">
+				<Fa6BrandsCss></Fa6BrandsCss>
 			</Tile>
-			<Tile size="smol"><LogosBun></LogosBun></Tile>
-			<Tile size="smol"><DeviconNixos></DeviconNixos></Tile>
+			<Tile size="smol" color="#fbf0df"><LogosBun></LogosBun></Tile>
+			<Tile size="smol" color="#2b2b2f"><DeviconNixos></DeviconNixos></Tile>
 		</div>
 		<p></p>
 
@@ -68,7 +67,6 @@
 		<div class="group inline-grid grid-flow-dense auto-rows-max gap-2 w-full">
 			<Tile color="#62BACF" href="https://unikara.moe" title="Unikara"><Unikara></Unikara></Tile>
 			<Tile size="normal" href="https://crabrave.vercel.app/" title="Crabrave">🦀</Tile>
-			<Tile size="normal" href="https://mts.muda.software/" title="Multi-track Search">🚅</Tile>
 			<Tile size="normal" color="#7FFF6A" href="https://beta.kvcm.live/" title="kvcm.live">
 				<img
 					src="/kvcmlive.png"

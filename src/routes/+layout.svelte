@@ -8,6 +8,7 @@
 	import CibLastFm from '~icons/cib/last-fm';
 	import SimpleIconsAnilist from '~icons/simple-icons/anilist';
 	import SimpleIconsTwitter from '~icons/simple-icons/twitter';
+	import SimpleIconsBluesky from '~icons/simple-icons/bluesky';
 	import SimpleIconsGithub from '~icons/simple-icons/github';
 	import LineMdRedditLoop from '~icons/line-md/reddit-loop';
 	import FluentPlayCircleHint16Filled from '~icons/fluent/play-circle-hint-16-filled';
@@ -60,8 +61,8 @@
 			<Tile href="https://anilist.co/user/oofdere" color="#2B2E41" title="AniList" size="wide">
 				<SimpleIconsAnilist></SimpleIconsAnilist>
 			</Tile>
-			<Tile href="https://twitter.com/oofdere" color="#1F9FF4" title="Twitter">
-				<SimpleIconsTwitter></SimpleIconsTwitter>
+			<Tile href="https://bsky.app/profile/oof.dere.systems" color="#0085ff" title="Bluesky">
+				<SimpleIconsBluesky></SimpleIconsBluesky>
 			</Tile>
 			<Tile href="https://github.com/oofdere" title="GitHub" color="#333">
 				<SimpleIconsGithub></SimpleIconsGithub>
@@ -77,7 +78,7 @@
 				title="TailwindCSS 4"
 				href="https://tailwindcss.com/blog/tailwindcss-v4-alpha"
 			>
-				<LogosTailwindcssIcon></LogosTailwindcssIcon>
+				<LogosTailwindcssIcon class="w-24"></LogosTailwindcssIcon>
 			</Tile>
 			<Tile size="smol">
 				<LogosVitejs></LogosVitejs>

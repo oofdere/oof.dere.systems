@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Tile from './Tile.svelte';
 	import { formatDate, getHours, getMinutes, getSeconds, intlFormat } from 'date-fns';
 
@@ -16,12 +16,18 @@
 		t.minute = getMinutes(time);
 		t.second = getSeconds(time);
 		t.day = intlFormat(time);
-	}, 100);
+	}, 1000);
+
+	function pad(x: number) {
+		return x.toString().padStart(2, '0');
+	}
 </script>
 
 <Tile size="wide" title="Clock">
-	<div class="flex flex-col h-full place-content-center">
-		<div class="text-6xl">{t.hour}:{t.minute}:{t.second}</div>
+	<div class="flex flex-col h-full place-content-center w-[3482tw]">
+		<div class="text-6xl">
+			{pad(t.hour)}:{pad(t.minute)}:{pad(t.second)}
+		</div>
 		<div class="text-2xl">{t.day}</div>
 	</div>
 </Tile>

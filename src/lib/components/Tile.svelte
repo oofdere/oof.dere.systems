@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
-	import type { Action } from 'svelte/action';
+	import { type Snippet } from 'svelte';
 
 	const {
 		children,
@@ -23,7 +22,6 @@
 	} = $props();
 
 	let e: HTMLElement;
-	let rect: DOMRect;
 
 	let mouse = $state({
 		x: 0,
@@ -68,7 +66,7 @@
 		{#if live}
 			{@render live()}
 		{:else}
-			{@render children()}
+			{@render children?.()}
 		{/if}
 	</div>
 
